@@ -1,0 +1,1 @@
+Generate Japanese Slack emoji
