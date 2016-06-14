@@ -121,7 +121,9 @@ var Zip = (function () {
         return str;
     };
     Zip.prototype.escapePathString = function (path) {
-        return eval("\"" + encodeURIComponent(path).replace(/%/g, "\\x").replace(/"/g, "\\x22") + "\"");
+        return encodeURIComponent(path).replace(/%([0-9A-Fa-f]{2})/g, function () {
+            return String.fromCharCode(parseInt(arguments[1], 16));
+        });
     };
     return Zip;
 }());
